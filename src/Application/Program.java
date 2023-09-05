@@ -17,12 +17,12 @@ public class Program {
 		System.out.print("Room number: ");
 		int number = sc.nextInt();
 		System.out.print("Check-in date (dd/mm/yyyy): ");
-		Date checkIn = sdf.parse(sc.next());
+		Date checkIn = sdf.parse(sc.next()); //converte o string capturado pelo scannerno formato de data
 		System.out.print("Check-out date (dd/mm/yyyy): ");
 		Date checkOut = sdf.parse(sc.next());
 		
 		
-		if(!checkOut.after(checkIn)) {
+		if(!checkOut.after(checkIn)) { //Se a data de checkou não for depois da de checkin
 			System.out.println("Error in reservation: Check-out date must be after check-in date.");
 		}else {
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
@@ -35,8 +35,8 @@ public class Program {
 			System.out.print("Check-out date (dd/mm/yyyy): ");
 			checkOut = sdf.parse(sc.next());
 			
-			Date now = new Date();
-			if(checkIn.before(now) || checkOut.before(now)) {
+			Date now = new Date(); //Instancia uma variavel com a data atual
+			if(checkIn.before(now) || checkOut.before(now)) { //Se o checkin ou checkout for antes de agora
 				System.out.println("Error in reservation: Reservation dates for updates must be future dates");
 			}else if(!checkOut.after(checkIn)) {
 				System.out.println("Error in reservation: Check-out date must be after check-in date.");
